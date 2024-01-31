@@ -103,7 +103,7 @@ class LangChainPredict(Predict, Runnable): #, RunnableBinding):
         # print(f"#> PRED = {content}\n\n\n")
         dspy.settings.langchain_history.append((prompt, pred))
             
-        if dsp.settings.trace is not None:
+        if dsp.settings.log_level <= dsp.Log.TRACE:
             trace = dsp.settings.trace
             trace.append((self, {**kwargs}, pred))
 

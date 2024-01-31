@@ -1,6 +1,14 @@
 from contextlib import contextmanager
 from dsp.utils.utils import dotdict
 import threading
+from enum import Enum
+import logging
+
+class Log(Enum):
+    TRACE = 5
+    INFO = logging.INFO # 20
+    ERROR = logging.ERROR # 40
+
 
 
 class Settings(object):
@@ -35,7 +43,8 @@ class Settings(object):
                 force_reuse_cached_compilation=False,
                 compiling=False,
                 skip_logprobs=False,
-                trace=None,
+                trace=[],
+                log_level=Log.ERROR,
                 release=0,
                 log_openai_usage=False,
                 bypass_assert=False,

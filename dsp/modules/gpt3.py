@@ -189,7 +189,7 @@ class GPT3(LM):
 
         response = self.request(prompt, **kwargs)
 
-        if dsp.settings.log_openai_usage:
+        if dsp.settings.log_openai_usage or dsp.settings.log_level <= dsp.Log.INFO:
             self.log_usage(response)
 
         choices = response["choices"]
